@@ -99,13 +99,13 @@ namespace Inscept.iOS.Settings
             
             if (!title.IsEmpty)
             {
-                WriteXmlElement(element, "Title", title, "en");    
+                element.AddKeyValuePair("Title", title, "en");    
             }
             
-            WriteXmlElement(element, "IsSecure", isSecure);
-            WriteXmlElement(element, "AutocorrectionType", autoCorrectionType);
-            WriteXmlElement(element, "AutocapitalizationType", autoCapitalizationType);
-            WriteXmlElement(element, "KeyboardType", keyboardType);
+            element.AddKeyValuePair("IsSecure", isSecure);
+            element.AddKeyValuePair("AutocorrectionType", autoCorrectionType);
+            element.AddKeyValuePair("AutocapitalizationType", autoCapitalizationType);
+            element.AddKeyValuePair("KeyboardType", keyboardType);
         }
     }
 }

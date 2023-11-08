@@ -67,12 +67,12 @@ namespace Inscept.iOS.Settings
         {
             if (!title.IsEmpty)
             {
-                WriteXmlElement(element, "Title", title, "en");    
+                element.AddKeyValuePair("Title", title, "en");    
             }
 
             if (!footerText.IsEmpty)
             {
-                WriteXmlElement(element, "FooterText", footerText, "en");
+                element.AddKeyValuePair("FooterText", footerText, "en");
             }
         }
     }

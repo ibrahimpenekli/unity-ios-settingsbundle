@@ -44,8 +44,8 @@ namespace Inscept.iOS.Settings
         {
             base.WriteXml(element);
             
-            WriteXmlElement(element, "MinimumValue", minimumValue);
-            WriteXmlElement(element, "MaximumValue", maximumValue);
+            element.AddKeyValuePair("MinimumValue", minimumValue);
+            element.AddKeyValuePair("MaximumValue", maximumValue);
         }
     }
 }

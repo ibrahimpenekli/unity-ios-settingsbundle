@@ -41,7 +41,7 @@ namespace Inscept.iOS.Settings
             if (title.IsEmpty)
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
             
-            WriteXmlElement(element, "Title", title, "en");
+            element.AddKeyValuePair("Title", title, "en");
         }
     }
 }

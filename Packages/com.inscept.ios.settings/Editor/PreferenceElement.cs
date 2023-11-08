@@ -45,7 +45,7 @@ namespace Inscept.iOS.Settings
         {
             var xml = new XElement("dict");
 
-            WriteXmlElement(xml, "Type", type);
+            xml.AddKeyValuePair("Type", type);
             WriteXml(xml);
 
             var idioms = supportedUserInterfaceIdioms.ToString().Split(',', StringSplitOptions.RemoveEmptyEntries);
@@ -68,44 +68,5 @@ namespace Inscept.iOS.Settings
         }
 
         protected abstract void WriteXml(XElement element);
-
-        protected static void WriteXmlElement<T>(XElement parent, string key, T value)
-        {
-            parent.Add(new XElement("key", key));
-            
-            var valueType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
-            
-            if (valueType != typeof(bool))
-            {
-                var valueString = "string";
-                var valueText = value.ToString();
-
-                if (valueType == typeof(int))
-                {
-                    valueString = "integer";
-                }
-                else if (valueType == typeof(float))
-                {
-                    valueString = "real";
-                }
-
-                parent.Add(new XElement(valueString, valueText));
-            }
-            else
-            {
-                parent.Add(new XElement(Convert.ToBoolean(value) ? "true" : "false"));
-            }
-        }
-
-        protected static void WriteXmlElement(XElement parent, string key, LocalizedString value,
-            LocaleIdentifier localeIdentifier)
-        {
-            if (value.IsEmpty)
-                return;
-
-            var locale = LocalizationSettings.AvailableLocales.GetLocale(localeIdentifier);
-            var strings = LocalizationSettings.StringDatabase;
-            WriteXmlElement(parent, key, strings.GetLocalizedString(value.TableEntryReference, locale));
-        }
     }
 }

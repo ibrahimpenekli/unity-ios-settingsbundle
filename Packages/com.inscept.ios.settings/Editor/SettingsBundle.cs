@@ -12,6 +12,19 @@ namespace Inscept.iOS.Settings
         fileName = "SettingsBundle", menuName = PreferenceElement.AssetMenuRoot + "Settings Bundle", order = -1)]
     public class SettingsBundle : ScriptableObject
     {
+        [Tooltip("Optional settings page title.")]
+        [SerializeField]
+        private LocalizedString _title;
+
+        /// <summary>
+        /// The string displayed as settings page title. If you omit the title, default title is displayed.
+        /// </summary>
+        public LocalizedString title
+        {
+            get => _title;
+            set => _title = value;
+        }
+        
         [SerializeField]
         private PreferenceElement[] _preferenceElements  = Array.Empty<PreferenceElement>();
 
@@ -21,16 +34,18 @@ namespace Inscept.iOS.Settings
             set => _preferenceElements = value;
         }
 
-        public void Export(string outputDirectory)
+        public string Export(string outputDirectory)
         {
-           var settingsBundleDirectory =  Path.Combine(outputDirectory, "Settings.bundle");
+           var settingsBundlePath =  Path.Combine(outputDirectory, "Settings.bundle");
            
-           Directory.CreateDirectory(settingsBundleDirectory);
+           Directory.CreateDirectory(settingsBundlePath);
            
-           ExportXml(settingsBundleDirectory, "Root", preferenceElements);
+           WritePlistFiles(settingsBundlePath, "Root", title, preferenceElements);
+
+           return settingsBundlePath;
         }
 
-        private static void ExportXml(string outputDirectory, string name, 
+        private static void WritePlistFiles(string outputDirectory, string name, LocalizedString title,
             IEnumerable<PreferenceElement> preferenceElements)
         {
             var doc = new XDocument();
@@ -43,15 +58,25 @@ namespace Inscept.iOS.Settings
            
             var dict = new XElement("dict");
             xml.Add(dict);
+
+            if (!title.IsEmpty)
+            {
+                dict.AddKeyValuePair("Title", title, "en");
+            }
            
-            dict.Add(new XElement("key", "StringsTable"));
-            dict.Add(new XElement("string", name));
+            dict.AddKeyValuePair("StringsTable", name);
             dict.Add(new XElement("key", "PreferenceSpecifiers"));
 
             var array = new XElement("array");
             dict.Add(array);
 
             var localizedStrings = new List<LocalizedString>();
+
+            if (title.IsEmpty)
+            {
+                localizedStrings.Add(title);
+            }
+            
             foreach (var element in preferenceElements)
             {
                 array.Add(element.CreateXml());
@@ -60,7 +85,8 @@ namespace Inscept.iOS.Settings
                 
                 if (element is ChildPaneElement childPaneElement)
                 {
-                    ExportXml(outputDirectory, childPaneElement.name, childPaneElement.preferenceElements);
+                    WritePlistFiles(outputDirectory, childPaneElement.name, new LocalizedString(), 
+                        childPaneElement.preferenceElements);
                 }
             }
            
@@ -68,10 +94,10 @@ namespace Inscept.iOS.Settings
             using var plistFile = File.Create(rootPlistPath);
             doc.Save(plistFile);
 
-            SaveLocalizedStrings(outputDirectory, name, localizedStrings);
+            WriteStringsFiles(outputDirectory, name, localizedStrings);
         }
 
-        private static void SaveLocalizedStrings(string outputDirectory, string name, 
+        private static void WriteStringsFiles(string outputDirectory, string name, 
             ICollection<LocalizedString> localizedStrings)
         {
             var stringDatabase = LocalizationSettings.StringDatabase;

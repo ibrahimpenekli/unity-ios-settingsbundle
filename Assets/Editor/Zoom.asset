@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Zoom
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
-  _key: Settings.Zoom
+  _identifier: Settings.Zoom
   _defaultValue: 2
   _minimumValue: 1
   _maximumValue: 5
-  _minimumValueImage: {fileID: 0}
-  _maximumValueImage: {fileID: 0}

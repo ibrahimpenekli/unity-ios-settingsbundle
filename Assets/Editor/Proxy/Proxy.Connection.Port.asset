@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Proxy.Connection.Port
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
-  _key: Settings.Proxy.Port
+  _identifier: Settings.Proxy.Port
   _defaultValue: 
   _title:
     m_TableReference:

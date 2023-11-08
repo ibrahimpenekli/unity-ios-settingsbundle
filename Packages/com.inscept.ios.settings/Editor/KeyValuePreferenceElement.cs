@@ -1,12 +1,10 @@
 ﻿using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Inscept.iOS.Settings
 {
     public abstract class KeyValuePreferenceElement<T> : PreferenceElement
     {
-        [FormerlySerializedAs("_key")]
         [Tooltip("The preference key with which to associate the value. This key is required.")]
         [SerializeField]
         private string _identifier;
@@ -37,8 +35,8 @@ namespace Inscept.iOS.Settings
 
         protected override void WriteXml(XElement element)
         {
-            WriteXmlElement(element, "Key", identifier);
-            WriteXmlElement(element, "DefaultValue", defaultValue);
+            element.AddKeyValuePair("Key", identifier);
+            element.AddKeyValuePair("DefaultValue", defaultValue);
         }
     }
 }
