@@ -48,9 +48,10 @@ namespace Inscept.iOS.Settings
         {
             if (title.IsEmpty)
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
-
+            
+            var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);
             element.AddKeyValuePair("Title", title, "en");
-            element.AddKeyValuePair("File", name);
+            element.AddKeyValuePair("File", fileName);
         }
     }
 }

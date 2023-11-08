@@ -37,6 +37,12 @@ namespace Inscept.iOS.Settings
         public string Export(string outputDirectory)
         {
            var settingsBundlePath =  Path.Combine(outputDirectory, "Settings.bundle");
+
+           // Remove old Settings.bundle if exists.
+           if (Directory.Exists(settingsBundlePath))
+           {
+               Directory.Delete(settingsBundlePath, true);
+           }
            
            Directory.CreateDirectory(settingsBundlePath);
            
@@ -63,8 +69,9 @@ namespace Inscept.iOS.Settings
             {
                 dict.AddKeyValuePair("Title", title, "en");
             }
-           
-            dict.AddKeyValuePair("StringsTable", name);
+
+            var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);
+            dict.AddKeyValuePair("StringsTable", fileName);
             dict.Add(new XElement("key", "PreferenceSpecifiers"));
 
             var array = new XElement("array");
@@ -90,11 +97,11 @@ namespace Inscept.iOS.Settings
                 }
             }
            
-            var rootPlistPath = Path.Combine(outputDirectory, $"{name}.plist");
+            var rootPlistPath = Path.Combine(outputDirectory, $"{fileName}.plist");
             using var plistFile = File.Create(rootPlistPath);
             doc.Save(plistFile);
 
-            WriteStringsFiles(outputDirectory, name, localizedStrings);
+            WriteStringsFiles(outputDirectory, fileName, localizedStrings);
         }
 
         private static void WriteStringsFiles(string outputDirectory, string name, 
