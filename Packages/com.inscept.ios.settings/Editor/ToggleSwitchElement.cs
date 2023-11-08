@@ -24,14 +24,14 @@ namespace Inscept.iOS.Settings
             set => _title = value;
         }
 
-        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
         {
-            foreach (var str in base.GetLocalizedStrings())
-            {
-                yield return str;
-            }
+            base.GetLocalizedStrings(localizedStrings);
             
-            yield return title;
+            if (!title.IsEmpty)
+            {
+                localizedStrings.Add(title);
+            }
         }
 
         protected override void WriteXml(XElement element)

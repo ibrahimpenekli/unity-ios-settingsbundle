@@ -45,21 +45,18 @@ namespace Inscept.iOS.Settings
             set => _footerText = value;
         }
         
-        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
         {
-            foreach (var str in base.GetLocalizedStrings())
-            {
-                yield return str;
-            }
-
+            base.GetLocalizedStrings(localizedStrings);
+            
             if (!title.IsEmpty)
             {
-                yield return title;
+                localizedStrings.Add(title);
             }
             
             if (!footerText.IsEmpty)
             {
-                yield return footerText;
+                localizedStrings.Add(footerText);
             }
         }
 

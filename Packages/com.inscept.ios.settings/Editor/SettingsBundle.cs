@@ -88,8 +88,8 @@ namespace Inscept.iOS.Settings
             {
                 array.Add(element.CreateXml());
 
-                localizedStrings.AddRange(element.GetLocalizedStrings());
-                
+                element.GetLocalizedStrings(localizedStrings);
+
                 if (element is ChildPaneElement childPaneElement)
                 {
                     WritePlistFiles(outputDirectory, childPaneElement.name, new LocalizedString(), 

@@ -54,6 +54,14 @@ MonoBehaviour:
     m_Localized: "Di\u011Fer Grup Ba\u015Fl\u0131\u011F\u0131"
     m_Metadata:
       m_Items: []
+  - m_Id: 178704490684416
+    m_Localized: "Hakk\u0131nda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178764943187968
+    m_Localized: "S\xFCr\xFCm"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

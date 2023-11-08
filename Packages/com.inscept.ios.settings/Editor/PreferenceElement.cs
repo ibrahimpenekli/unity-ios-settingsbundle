@@ -36,9 +36,9 @@ namespace Inscept.iOS.Settings
             set => _supportedUserInterfaceIdioms = value;
         }
 
-        public virtual IEnumerable<LocalizedString> GetLocalizedStrings()
+        public virtual void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
         {
-            return Enumerable.Empty<LocalizedString>();
+            // Intentionally empty.
         }
 
         public XElement CreateXml()

@@ -80,16 +80,13 @@ namespace Inscept.iOS.Settings
             set => _autoCorrectionType = value;
         }
 
-        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
         {
-            foreach (var str in base.GetLocalizedStrings())
-            {
-                yield return str;
-            }
-
+            base.GetLocalizedStrings(localizedStrings);
+            
             if (!title.IsEmpty)
             {
-                yield return title;
+                localizedStrings.Add(title);
             }
         }
 
