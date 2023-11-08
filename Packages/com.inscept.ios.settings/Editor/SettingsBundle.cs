@@ -72,7 +72,7 @@ namespace Inscept.iOS.Settings
 
             var localizedStrings = new List<LocalizedString>();
 
-            if (title.IsEmpty)
+            if (!title.IsEmpty)
             {
                 localizedStrings.Add(title);
             }

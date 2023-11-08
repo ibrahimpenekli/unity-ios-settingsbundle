@@ -19,43 +19,39 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 32171115683840
-    m_Localized: Vekil Sunucu Ayarla
+    m_Localized: "Metin Alan\u0131 - Varsay\u0131lan"
     m_Metadata:
       m_Items: []
   - m_Id: 34460647825408
-    m_Localized: "Ba\u011Flant\u0131"
+    m_Localized: "Metin Alan\u0131 - G\xFCvenli"
     m_Metadata:
       m_Items: []
   - m_Id: 34513814822912
-    m_Localized: Vekil Sunucu Kullan
+    m_Localized: "Metin Alan\u0131 - URL"
     m_Metadata:
       m_Items: []
   - m_Id: 34605129015296
-    m_Localized: Sunucu
+    m_Localized: "Metin Alanlar\u0131"
     m_Metadata:
       m_Items: []
-  - m_Id: 34635944566784
-    m_Localized: Port
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34657666867200
-    m_Localized: Kimlik Bilgileri
+  - m_Id: 96813380804608
+    m_Localized: "Ayarlar Sayfas\u0131 Ba\u015Fl\u0131\u011F\u0131"
     m_Metadata:
       m_Items: []
   - m_Id: 34731490811904
-    m_Localized: "Kimlik Do\u011Frulama"
+    m_Localized: Anahtar
     m_Metadata:
       m_Items: []
-  - m_Id: 34788596260864
-    m_Localized: "Kullan\u0131c\u0131 Ad\u0131"
+  - m_Id: 95974910074880
+    m_Localized: "Di\u011Fer B\xF6l\xFCm Ba\u015Fl\u0131\u011F\u0131"
     m_Metadata:
       m_Items: []
-  - m_Id: 34837485068288
-    m_Localized: Parola
+  - m_Id: 94407272177664
+    m_Localized: "Di\u011Fer Grup Altbilgisi"
     m_Metadata:
       m_Items: []
-  - m_Id: 35133300940800
-    m_Localized: Http Proxy
+  - m_Id: 95272603230208
+    m_Localized: "Di\u011Fer Grup Ba\u015Fl\u0131\u011F\u0131"
     m_Metadata:
       m_Items: []
   references:

@@ -16,43 +16,39 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 8db9d11c614ca1f45913241643130cd7
   m_Entries:
   - m_Id: 32171115683840
-    m_Key: ConfigureProxy
+    m_Key: TextField_Default
     m_Metadata:
       m_Items: []
   - m_Id: 34460647825408
-    m_Key: Connection
+    m_Key: TextField_Secure
     m_Metadata:
       m_Items: []
   - m_Id: 34513814822912
-    m_Key: UseProxy
+    m_Key: TextField_Url
     m_Metadata:
       m_Items: []
   - m_Id: 34605129015296
-    m_Key: Server
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34635944566784
-    m_Key: Port
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34657666867200
-    m_Key: Credentials
+    m_Key: TextField_Group
     m_Metadata:
       m_Items: []
   - m_Id: 34731490811904
-    m_Key: Authentication
+    m_Key: Other_ToggleSwitch
     m_Metadata:
       m_Items: []
-  - m_Id: 34788596260864
-    m_Key: Username
+  - m_Id: 94407272177664
+    m_Key: Other_Group_Footer
     m_Metadata:
       m_Items: []
-  - m_Id: 34837485068288
-    m_Key: Password
+  - m_Id: 95272603230208
+    m_Key: Other_Group_Title
     m_Metadata:
       m_Items: []
-  - m_Id: 35133300940800
-    m_Key: HttpProxy
+  - m_Id: 95974910074880
+    m_Key: Other_ChildPane_Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96813380804608
+    m_Key: SettingsPage_Title
     m_Metadata:
       m_Items: []
   m_Metadata:

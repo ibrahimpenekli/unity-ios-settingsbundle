@@ -19,43 +19,39 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 32171115683840
-    m_Localized: Configure Proxy
+    m_Localized: Text Field - Default
     m_Metadata:
       m_Items: []
   - m_Id: 34460647825408
-    m_Localized: Connection
+    m_Localized: Text Field - Secure
     m_Metadata:
       m_Items: []
   - m_Id: 34513814822912
-    m_Localized: Use Proxy
+    m_Localized: Text Field - URL
     m_Metadata:
       m_Items: []
   - m_Id: 34605129015296
-    m_Localized: Server
+    m_Localized: Text Fields
     m_Metadata:
       m_Items: []
-  - m_Id: 34635944566784
-    m_Localized: Port
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34657666867200
-    m_Localized: Credentials
+  - m_Id: 96813380804608
+    m_Localized: Settings Page Title
     m_Metadata:
       m_Items: []
   - m_Id: 34731490811904
-    m_Localized: Authentication
+    m_Localized: Toggle Switch
     m_Metadata:
       m_Items: []
-  - m_Id: 34788596260864
-    m_Localized: Username
+  - m_Id: 95974910074880
+    m_Localized: Other Pane Title
     m_Metadata:
       m_Items: []
-  - m_Id: 34837485068288
-    m_Localized: Password
+  - m_Id: 94407272177664
+    m_Localized: Other Group Footer
     m_Metadata:
       m_Items: []
-  - m_Id: 35133300940800
-    m_Localized: Http Proxy
+  - m_Id: 95272603230208
+    m_Localized: Other Group Title
     m_Metadata:
       m_Items: []
   references:
