@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 using UnityEngine;
 
 namespace Inscept.iOS.Settings
@@ -35,6 +36,9 @@ namespace Inscept.iOS.Settings
 
         protected override void WriteXml(XElement element)
         {
+            if (string.IsNullOrWhiteSpace(identifier))
+                throw new ArgumentException($"Identifier is required for '{name} ({type})'");
+                    
             element.AddKeyValuePair("Key", identifier);
             element.AddKeyValuePair("DefaultValue", defaultValue.value);
         }
