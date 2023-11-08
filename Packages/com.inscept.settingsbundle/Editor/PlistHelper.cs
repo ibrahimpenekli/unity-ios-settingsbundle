@@ -1,7 +1,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     internal static class PlistHelper
     {

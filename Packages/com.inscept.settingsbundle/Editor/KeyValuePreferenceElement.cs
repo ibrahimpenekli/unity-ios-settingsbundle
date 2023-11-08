@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     public abstract class KeyValuePreferenceElement<T> : PreferenceElement
     {

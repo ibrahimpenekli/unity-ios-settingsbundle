@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     public abstract class PreferenceElement : ScriptableObject
     {

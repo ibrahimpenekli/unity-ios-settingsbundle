@@ -1,4 +1,4 @@
-﻿namespace Inscept.iOS.Settings.Examples
+﻿namespace Inscept.SettingsBundle.Examples
 {
     public class BoolPreferenceSetter : PreferenceSetter<bool>
     {

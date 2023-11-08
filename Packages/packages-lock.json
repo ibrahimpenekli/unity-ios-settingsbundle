@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "com.inscept.ios.settings": {
-      "version": "file:com.inscept.ios.settings",
+    "com.inscept.settingsbundle": {
+      "version": "file:com.inscept.settingsbundle",
       "depth": 0,
       "source": "embedded",
-      "dependencies": {}
+      "dependencies": {
+        "com.unity.localization": "1.3.2"
+      }
     },
     "com.unity.addressables": {
       "version": "1.19.19",

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [CustomEditor(typeof(SettingsBundle))]
     public class SettingsBundleEditor : Editor

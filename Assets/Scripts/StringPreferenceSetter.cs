@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Inscept.iOS.Settings.Examples
+namespace Inscept.SettingsBundle.Examples
 {
     public class StringPreferenceSetter : PreferenceSetter<string>
     {

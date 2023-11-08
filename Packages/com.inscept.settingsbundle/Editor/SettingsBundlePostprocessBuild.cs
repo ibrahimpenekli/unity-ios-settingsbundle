@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEditor.iOS.Xcode;
 #endif
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     public class SettingsBundlePostprocessBuild : IPostprocessBuildWithReport
     {

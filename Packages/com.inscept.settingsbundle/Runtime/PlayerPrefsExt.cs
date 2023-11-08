@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     /// <summary>
     /// You can access/modify iOS settings by using the <see cref="PlayerPrefs"/> class. This class contains some

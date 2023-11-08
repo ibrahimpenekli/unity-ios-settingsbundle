@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     /// <summary>
     /// This element displays a slider that you can use to specify a continuous range of values for the user.

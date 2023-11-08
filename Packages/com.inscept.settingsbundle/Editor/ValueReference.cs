@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [Serializable]
     public class ValueReference<T>

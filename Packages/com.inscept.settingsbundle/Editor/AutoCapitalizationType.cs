@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [Serializable]
     public enum AutoCapitalizationType

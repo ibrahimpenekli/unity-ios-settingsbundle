@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     /// <summary>
     /// This type defines a group element, which is a way to visually group preferences on a page. This element

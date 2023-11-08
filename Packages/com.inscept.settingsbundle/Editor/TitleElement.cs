@@ -1,29 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
-    [CreateAssetMenu(fileName = "Toggle Switch", menuName = AssetMenuRoot + "Toggle Switch")]
-    public class ToggleSwitchElement : KeyValuePreferenceElement<bool>
+    [CreateAssetMenu(fileName = "Title", menuName = AssetMenuRoot + "Title")]
+    public class TitleElement : KeyValuePreferenceElement<string>
     {
-        public override string type => "PSToggleSwitchSpecifier";
+        public override string type => "PSTitleValueSpecifier";
         
-        [Tooltip("The string displayed to the left of the switch. This is required.")]
+        [Tooltip("The string displayed to the left of the value.")]
         [SerializeField]
         private LocalizedString _title;
 
         /// <summary>
-        /// The string displayed to the left of the switch. This is required.
+        /// The string displayed to the left of the value..
         /// </summary>
         public LocalizedString title
         {
             get => _title;
             set => _title = value;
         }
-
+        
         public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
         {
             base.GetLocalizedStrings(localizedStrings);
@@ -33,7 +33,7 @@ namespace Inscept.iOS.Settings
                 localizedStrings.Add(title);
             }
         }
-
+        
         protected override void WriteXml(XElement element)
         {
             base.WriteXml(element);

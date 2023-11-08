@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Inscept.iOS.Settings.Examples
+namespace Inscept.SettingsBundle.Examples
 {
     public abstract class PreferenceSetter<T> : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [CreateAssetMenu(fileName = "Child Pane", menuName = AssetMenuRoot + "Child Pane")]
     public class ChildPaneElement : PreferenceElement

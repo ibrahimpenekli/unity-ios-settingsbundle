@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     public static class XmlExtensions
     {

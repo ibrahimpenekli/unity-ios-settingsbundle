@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [CustomEditor(typeof(KeyValuePreferenceElement<>), editorForChildClasses: true)]
     public class KeyValuePreferenceElementEditor : Editor

@@ -1,5 +1,5 @@
 # iOS Settings Bundle for Unity
-Enables Unity developers to add their app preferences into the iOS Settings app.
+Enables Unity developers to add their app preferences into the iOS Settings app. 
 For more information about Settings Bundle, see Apple’s documentation on [Implementing an iOS Settings Bundle](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html).
 
 ## Install via Unity Package Manager:

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Inscept.iOS.Settings
+namespace Inscept.SettingsBundle
 {
     [CustomPropertyDrawer(typeof(ValueReference<>))]
     public class ValueReferencePropertyDrawer : PropertyDrawer

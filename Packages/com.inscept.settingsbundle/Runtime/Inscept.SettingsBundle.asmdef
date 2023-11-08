@@ -1,6 +1,6 @@
 {
-    "name": "Inscept.iOS.Settings",
-    "rootNamespace": "Inscept.iOS.Settings",
+    "name": "Inscept.SettingsBundle",
+    "rootNamespace": "Inscept.SettingsBundle",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
