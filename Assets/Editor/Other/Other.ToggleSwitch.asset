@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
   _identifier: Settings.Other.ToggleSwitch
-  _defaultValue: 0
+  _defaultValue:
+    _useConstant: 1
+    _constantValue: 0
+    _variable: {fileID: 0}
   _title:
     m_TableReference:
       m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7

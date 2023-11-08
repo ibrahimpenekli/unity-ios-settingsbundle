@@ -16,12 +16,12 @@ namespace Inscept.iOS.Settings
         
         [Tooltip("The minimum value for the slider. Required.")]
         [SerializeField]
-        private float _minimumValue;
+        private ValueReference<float> _minimumValue = new ValueReference<float>();
 
         /// <summary>
         /// The minimum value for the slider. Required.
         /// </summary>
-        public float minimumValue
+        public ValueReference<float> minimumValue
         {
             get => _minimumValue;
             set => _minimumValue = value;
@@ -29,12 +29,12 @@ namespace Inscept.iOS.Settings
 
         [Tooltip("The maximum value for the slider. Required.")]
         [SerializeField]
-        private float _maximumValue;
+        private ValueReference<float> _maximumValue = new ValueReference<float>();
 
         /// <summary>
         /// The maximum value for the slider. Required.
         /// </summary>
-        public float maximumValue
+        public ValueReference<float> maximumValue
         {
             get => _maximumValue;
             set => _maximumValue = value;
@@ -44,8 +44,8 @@ namespace Inscept.iOS.Settings
         {
             base.WriteXml(element);
             
-            element.AddKeyValuePair("MinimumValue", minimumValue);
-            element.AddKeyValuePair("MaximumValue", maximumValue);
+            element.AddKeyValuePair("MinimumValue", minimumValue.value);
+            element.AddKeyValuePair("MaximumValue", maximumValue.value);
         }
     }
 }

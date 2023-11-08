@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
   _identifier: Settings.About.Version
-  _defaultValue: 0
+  _defaultValue:
+    _useConstant: 0
+    _constantValue: 
+    _variable: {fileID: 11400000, guid: d46ca6608698742af94dafab0793a9ed, type: 2}
   _title:
     m_TableReference:
       m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7

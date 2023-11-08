@@ -21,13 +21,13 @@ namespace Inscept.iOS.Settings
         
         [Tooltip("The default value for the preference key.")]
         [SerializeField]
-        private T _defaultValue;
+        private ValueReference<T> _defaultValue = new ValueReference<T>();
 
         /// <summary>
         /// The default value for the preference key. This value is returned when the specified preferences
         /// <see cref="identifier"/> is not present in the preferences database.
         /// </summary>
-        public T defaultValue
+        public ValueReference<T> defaultValue
         {
             get => _defaultValue;
             set => _defaultValue = value;
@@ -36,7 +36,7 @@ namespace Inscept.iOS.Settings
         protected override void WriteXml(XElement element)
         {
             element.AddKeyValuePair("Key", identifier);
-            element.AddKeyValuePair("DefaultValue", defaultValue);
+            element.AddKeyValuePair("DefaultValue", defaultValue.value);
         }
     }
 }
