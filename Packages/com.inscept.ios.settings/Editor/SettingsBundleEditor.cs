@@ -16,7 +16,6 @@ namespace Inscept.iOS.Settings
             
             if (AssetPath != path)
             {
-                Debug.Log(path);
                 EditorGUILayout.HelpBox(
                     $"Settings bundle asset path should be '{AssetPath}' to be compiled.",
                     MessageType.Warning);
@@ -24,8 +23,16 @@ namespace Inscept.iOS.Settings
 
             if (GUILayout.Button("Export"))
             {
+                var outputPath = EditorUtility.OpenFolderPanel("Export Settings Bundle", "", "Settings.bundle");
+                if (string.IsNullOrEmpty(outputPath))
+                    return;
+                
                 var settingsBundle = (SettingsBundle)target;
-                settingsBundle.Export("D:/");
+                settingsBundle.Export(outputPath);
+                
+                // Settings bundle might be saved under Assets folder.
+                // So it needs to be refreshed to make it visible.
+                AssetDatabase.Refresh();
             }
         }
         
