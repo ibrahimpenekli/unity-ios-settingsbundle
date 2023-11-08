@@ -1,0 +1,19 @@
+{
+    "name": "Inscept.SettingsBundle.Editor",
+    "rootNamespace": "Inscept.SettingsBundle",
+    "references": [
+        "GUID:9282be3d0f46a4244b4370ac17d22085",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
