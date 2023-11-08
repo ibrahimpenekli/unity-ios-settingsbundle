@@ -29,7 +29,9 @@ namespace Inscept.iOS.Settings
                 project.ReadFromFile(projectPath);
                 
                 var targetGuid = project.GetUnityMainTargetGuid();
-                var settingsBundleGuid = project.FindFileGuidByProjectPath(settingsBundlePath);
+                var settingsBundleGuid = 
+                    project.AddFolderReference(settingsBundlePath, Path.GetFileName(settingsBundlePath));
+                
                 project.AddFileToBuild(targetGuid, settingsBundleGuid);
                 File.WriteAllText(projectPath, project.WriteToString());
             }

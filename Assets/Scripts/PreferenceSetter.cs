@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Inscept.iOS.Settings.Examples
@@ -8,7 +9,7 @@ namespace Inscept.iOS.Settings.Examples
         public string identifier;
         public UnityEvent<T> setter;
 
-        private void Start()
+        private void OnEnable()
         {
             setter.Invoke(GetValue(identifier));
         }
