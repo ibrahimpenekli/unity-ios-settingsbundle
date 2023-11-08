@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEngine;
 using UnityEngine.Localization;
 
 namespace Inscept.iOS.Settings
@@ -11,6 +13,8 @@ namespace Inscept.iOS.Settings
     [CreateAssetMenu(fileName = "Group", menuName = AssetMenuRoot + "Group")]
     public class GroupElement : PreferenceElement
     {
+        public override string type => "PSGroupSpecifier";
+
         [Tooltip("The title of the group. If you do not specify title, a gap is inserted between preferences.")]
         [SerializeField]
         private LocalizedString _title;
@@ -39,6 +43,37 @@ namespace Inscept.iOS.Settings
         {
             get => _footerText;
             set => _footerText = value;
+        }
+        
+        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        {
+            foreach (var str in base.GetLocalizedStrings())
+            {
+                yield return str;
+            }
+
+            if (!title.IsEmpty)
+            {
+                yield return title;
+            }
+            
+            if (!footerText.IsEmpty)
+            {
+                yield return footerText;
+            }
+        }
+
+        protected override void WriteXml(XElement element)
+        {
+            if (!title.IsEmpty)
+            {
+                WriteXmlElement(element, "Title", title, "en");    
+            }
+
+            if (!footerText.IsEmpty)
+            {
+                WriteXmlElement(element, "FooterText", footerText, "en");
+            }
         }
     }
 }

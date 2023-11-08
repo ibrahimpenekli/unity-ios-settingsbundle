@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -7,6 +9,8 @@ namespace Inscept.iOS.Settings
     [CreateAssetMenu(fileName = "Child Pane", menuName = AssetMenuRoot + "Child Pane")]
     public class ChildPaneElement : PreferenceElement
     {
+        public override string type => "PSChildPaneSpecifier";
+        
         [Tooltip("The title string displayed in the preference row.")]
         [SerializeField]
         private LocalizedString _title;
@@ -28,6 +32,25 @@ namespace Inscept.iOS.Settings
         {
             get => _preferenceElements;
             set => _preferenceElements = value;
+        }
+        
+        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        {
+            foreach (var str in base.GetLocalizedStrings())
+            {
+                yield return str;
+            }
+
+            yield return title;
+        }
+
+        protected override void WriteXml(XElement element)
+        {
+            if (title.IsEmpty)
+                throw new ArgumentException($"Title is required for '{name} ({type})'");
+
+            WriteXmlElement(element, "Title", title, "en");
+            WriteXmlElement(element, "File", name);
         }
     }
 }

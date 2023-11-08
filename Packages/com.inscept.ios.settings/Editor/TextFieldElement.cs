@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿
+using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEngine;
 using UnityEngine.Localization;
 
 namespace Inscept.iOS.Settings
@@ -6,6 +9,8 @@ namespace Inscept.iOS.Settings
     [CreateAssetMenu(fileName = "Text Field", menuName = AssetMenuRoot + "Text Field")]
     public class TextFieldElement : KeyValuePreferenceElement<string>
     {
+        public override string type => "PSTextFieldSpecifier";
+
         [Tooltip("The string displayed to the left of the text field’s value.")]
         [SerializeField]
         private LocalizedString _title;
@@ -73,6 +78,34 @@ namespace Inscept.iOS.Settings
         {
             get => _autoCorrectionType;
             set => _autoCorrectionType = value;
+        }
+
+        public override IEnumerable<LocalizedString> GetLocalizedStrings()
+        {
+            foreach (var str in base.GetLocalizedStrings())
+            {
+                yield return str;
+            }
+
+            if (!title.IsEmpty)
+            {
+                yield return title;
+            }
+        }
+
+        protected override void WriteXml(XElement element)
+        {
+            base.WriteXml(element);
+            
+            if (!title.IsEmpty)
+            {
+                WriteXmlElement(element, "Title", title, "en");    
+            }
+            
+            WriteXmlElement(element, "IsSecure", isSecure);
+            WriteXmlElement(element, "AutocorrectionType", autoCorrectionType);
+            WriteXmlElement(element, "AutocapitalizationType", autoCapitalizationType);
+            WriteXmlElement(element, "KeyboardType", keyboardType);
         }
     }
 }
