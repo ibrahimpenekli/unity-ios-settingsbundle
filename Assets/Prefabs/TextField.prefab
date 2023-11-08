@@ -274,7 +274,20 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1337805037224846201}
+        m_TargetAssemblyTypeName: Inscept.iOS.Settings.Examples.PreferenceSetter`1[[System.String,
+          mscorlib
+        m_MethodName: SetValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -478,6 +491,7 @@ GameObject:
   - component: {fileID: 3925506381429467940}
   - component: {fileID: 5819873306255816863}
   - component: {fileID: 7951080807184379876}
+  - component: {fileID: 1337805037224846201}
   m_Layer: 5
   m_Name: TextField
   m_TagString: Untagged
@@ -555,6 +569,34 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1337805037224846201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673772883488411551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083559ecb92740dc9e98fb3fb4b942b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: 
+  setter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4490213000672049454}
+        m_TargetAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6010406698691389278
 GameObject:
   m_ObjectHideFlags: 0
