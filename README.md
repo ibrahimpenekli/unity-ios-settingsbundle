@@ -3,8 +3,8 @@ Enables Unity developers to add their app preferences into the iOS Settings app.
 For more information about Settings Bundle, see Apple’s documentation on [Implementing an iOS Settings Bundle](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html).
 
 ## Install via Unity Package Manager:
-* Add `"com.inscept.settingsbundle": "https://github.com/ibrahimpenekli/unity-ios-settings.git#1.0.0"` to your project's package manifest file in dependencies section.
-* Or, `Package Manager > Add package from git URL...` and paste this URL: `https://github.com/ibrahimpenekli/unity-ios-settings.git#1.0.0`
+* Add `"com.inscept.settingsbundle": "https://github.com/ibrahimpenekli/unity-ios-settingsbundle.git#1.0.0"` to your project's package manifest file in dependencies section.
+* Or, `Package Manager > Add package from git URL...` and paste this URL: `https://github.com/ibrahimpenekli/unity-ios-settingsbundle.git#1.0.0`
 
 ## How to Use?
 
