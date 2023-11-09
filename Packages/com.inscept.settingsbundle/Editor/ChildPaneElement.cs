@@ -43,7 +43,7 @@ namespace Inscept.SettingsBundle
 
         protected override void WriteXml(XElement element)
         {
-            if (!title.TryGetValue("en", out var titleString))
+            if (!title.TryGetDefaultValue(out var titleString))
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
 
             var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);

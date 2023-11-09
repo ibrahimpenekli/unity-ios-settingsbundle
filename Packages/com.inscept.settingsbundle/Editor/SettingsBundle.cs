@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 namespace Inscept.SettingsBundle
@@ -12,18 +11,7 @@ namespace Inscept.SettingsBundle
         fileName = "SettingsBundle", menuName = PreferenceElement.AssetMenuRoot + "Settings Bundle", order = -1)]
     public class SettingsBundle : ScriptableObject
     {
-        [Tooltip("Optional settings page title.")]
-        [SerializeField]
-        private LocalizableStringReference _title = new LocalizableStringReference();
-
-        /// <summary>
-        /// The string displayed as settings page title. If you omit the title, default title is displayed.
-        /// </summary>
-        public LocalizableStringReference title
-        {
-            get => _title;
-            set => _title = value;
-        }
+        public const string FileName = "Settings.bundle";
         
         [SerializeField]
         private PreferenceElement[] _preferenceElements  = Array.Empty<PreferenceElement>();
@@ -36,7 +24,7 @@ namespace Inscept.SettingsBundle
 
         public string Export(string outputDirectory)
         {
-           var settingsBundlePath =  Path.Combine(outputDirectory, "Settings.bundle");
+           var settingsBundlePath =  Path.Combine(outputDirectory, FileName);
 
            // Remove old Settings.bundle if exists.
            if (Directory.Exists(settingsBundlePath))
@@ -46,12 +34,12 @@ namespace Inscept.SettingsBundle
            
            Directory.CreateDirectory(settingsBundlePath);
 
-           WritePlistFiles(settingsBundlePath, "Root", title, preferenceElements);
+           WritePlistFiles(settingsBundlePath, "Root", preferenceElements);
 
            return settingsBundlePath;
         }
 
-        private static void WritePlistFiles(string outputDirectory, string name, LocalizableStringReference title,
+        private static void WritePlistFiles(string outputDirectory, string name,
             IEnumerable<PreferenceElement> preferenceElements)
         {
             var doc = new XDocument();
@@ -65,11 +53,6 @@ namespace Inscept.SettingsBundle
             var dict = new XElement("dict");
             xml.Add(dict);
 
-            if (title != null && title.TryGetValue("en", out var titleString))
-            {
-                dict.AddKeyValuePair("Title", titleString);
-            }
-
             var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);
             dict.AddKeyValuePair("StringsTable", fileName);
             dict.Add(new XElement("key", "PreferenceSpecifiers"));
@@ -78,11 +61,6 @@ namespace Inscept.SettingsBundle
             dict.Add(array);
 
             var localizedStrings = new List<LocalizableStringReference>();
-            
-            if (title != null)
-            {
-                localizedStrings.Add(title);    
-            }
 
             foreach (var element in preferenceElements)
             {
@@ -92,7 +70,7 @@ namespace Inscept.SettingsBundle
 
                 if (element is ChildPaneElement childPaneElement)
                 {
-                    WritePlistFiles(outputDirectory, childPaneElement.name, null, childPaneElement.preferenceElements);
+                    WritePlistFiles(outputDirectory, childPaneElement.name, childPaneElement.preferenceElements);
                 }
             }
            
@@ -128,7 +106,7 @@ namespace Inscept.SettingsBundle
                 foreach (var localizableString in localizableStrings)
                 {
                     if (!localizableString.IsLocalizable() ||
-                        !localizableString.TryGetValue("en", out var defaultValue) ||
+                        !localizableString.TryGetDefaultValue(out var defaultValue) ||
                         !localizableString.TryGetValue(locale.Identifier, out var value))
                         continue;
 

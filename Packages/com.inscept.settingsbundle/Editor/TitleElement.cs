@@ -35,7 +35,7 @@ namespace Inscept.SettingsBundle
         {
             base.WriteXml(element);
 
-            if (!title.TryGetValue("en", out var titleString))
+            if (!title.TryGetDefaultValue(out var titleString))
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
 
             element.AddKeyValuePair("Title", titleString);

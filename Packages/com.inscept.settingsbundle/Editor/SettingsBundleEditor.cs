@@ -23,7 +23,7 @@ namespace Inscept.SettingsBundle
 
             if (GUILayout.Button("Export"))
             {
-                var outputPath = EditorUtility.OpenFolderPanel("Export Settings Bundle", "", "Settings.bundle");
+                var outputPath = EditorUtility.OpenFolderPanel("Export Settings Bundle", "", SettingsBundle.FileName);
                 if (string.IsNullOrEmpty(outputPath))
                     return;
                 

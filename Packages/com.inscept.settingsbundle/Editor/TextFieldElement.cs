@@ -91,7 +91,7 @@ namespace Inscept.SettingsBundle
         {
             base.WriteXml(element);
             
-            if (title.TryGetValue("en", out var titleString))
+            if (title.TryGetDefaultValue(out var titleString))
             {
                 element.AddKeyValuePair("Title", titleString);    
             }

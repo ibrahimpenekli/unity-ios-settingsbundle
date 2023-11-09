@@ -54,12 +54,12 @@ namespace Inscept.SettingsBundle
 
         protected override void WriteXml(XElement element)
         {
-            if (title.TryGetValue("en", out var titleString))
+            if (title.TryGetDefaultValue(out var titleString))
             {
                 element.AddKeyValuePair("Title", titleString);
             }
 
-            if (footerText.TryGetValue("en", out var footerString))
+            if (footerText.TryGetDefaultValue(out var footerString))
             {
                 element.AddKeyValuePair("FooterText", footerString);
             }

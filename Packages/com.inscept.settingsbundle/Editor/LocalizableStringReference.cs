@@ -23,6 +23,11 @@ namespace Inscept.SettingsBundle
             return variable != null && variable.IsLocalizable();
         }
 
+        public bool TryGetDefaultValue(out string value)
+        {
+            return TryGetValue(LocalizationSettings.ProjectLocale.Identifier, out value);
+        }
+
         public bool TryGetValue(LocaleIdentifier localeIdentifier, out string value)
         {
             value = string.Empty;
@@ -31,7 +36,7 @@ namespace Inscept.SettingsBundle
             {
                 if (constantValue.IsEmpty)
                     return false;
-
+                
                 var locale = LocalizationSettings.AvailableLocales.GetLocale(localeIdentifier);
                 var stringDatabase = LocalizationSettings.StringDatabase;
 
