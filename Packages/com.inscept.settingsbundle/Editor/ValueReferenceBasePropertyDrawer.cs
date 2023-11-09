@@ -20,9 +20,7 @@ namespace Inscept.SettingsBundle
                 _popupStyle.imagePosition = ImagePosition.ImageOnly;
             }
 
-            label = EditorGUI.BeginProperty(position, label, property);
-            position = EditorGUI.PrefixLabel(position, label);
-            
+            EditorGUI.BeginProperty(position, GUIContent.none, property);
             EditorGUI.BeginChangeCheck();
 
             // Get properties
@@ -32,19 +30,19 @@ namespace Inscept.SettingsBundle
 
             // Calculate rect for configuration button
             var buttonRect = new Rect(position);
-            buttonRect.yMin += _popupStyle.margin.top;
             buttonRect.width = _popupStyle.fixedWidth + _popupStyle.margin.right;
-            position.xMin = buttonRect.xMax;
-
+            buttonRect.yMin += _popupStyle.margin.top;
+            buttonRect.x = position.x + position.width - buttonRect.width;
+            position.width -= buttonRect.width + 2;
+            
             // Store old indent level and set it to 0, the PrefixLabel takes care of it
             var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
             var result = EditorGUI.Popup(buttonRect, useConstant.boolValue ? 0 : 1, _popupOptions, _popupStyle);
-
             useConstant.boolValue = result == 0;
-
-            EditorGUI.PropertyField(position, useConstant.boolValue ? constantValue : variable, GUIContent.none);
+            
+            EditorGUI.PropertyField(position, useConstant.boolValue ? constantValue : variable, label);
 
             if (EditorGUI.EndChangeCheck())
             {
