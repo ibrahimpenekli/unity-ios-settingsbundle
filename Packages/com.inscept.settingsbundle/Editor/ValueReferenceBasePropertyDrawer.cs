@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Inscept.SettingsBundle
 {
-    [CustomPropertyDrawer(typeof(ValueReference<>))]
-    public class ValueReferencePropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(ValueReferenceBase<,>), useForChildren: true)]
+    public class ValueReferenceBasePropertyDrawer : PropertyDrawer
     {
         // Options to display in the popup to select constant or variable.
         private readonly string[] _popupOptions = { "Use Constant", "Use Variable" };

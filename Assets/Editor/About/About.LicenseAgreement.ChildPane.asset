@@ -9,27 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14a269166c34e9eb6b0a36d54190f20, type: 3}
-  m_Name: About.Version
+  m_Script: {fileID: 11500000, guid: 6050b9d21f35458a88ce7a10fdbd1bb8, type: 3}
+  m_Name: About.LicenseAgreement.ChildPane
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
-  _identifier: Settings.About.Version
-  _defaultValue:
-    _useConstant: 0
-    _constantValue: 
-    _variable: {fileID: 11400000, guid: d46ca6608698742af94dafab0793a9ed, type: 2}
   _title:
     _useConstant: 1
     _constantValue:
       m_TableReference:
         m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
       m_TableEntryReference:
-        m_KeyId: 178764943187968
+        m_KeyId: 234935532118016
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
     _variable: {fileID: 0}
+  _preferenceElements:
+  - {fileID: 11400000, guid: 9b1f2dce9ed654f71be86266eb47e9bf, type: 2}
   references:
     version: 2
     RefIds: []

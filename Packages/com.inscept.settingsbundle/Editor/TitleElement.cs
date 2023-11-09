@@ -10,38 +10,35 @@ namespace Inscept.SettingsBundle
     public class TitleElement : KeyValuePreferenceElement<string>
     {
         public override string type => "PSTitleValueSpecifier";
-        
+
         [Tooltip("The string displayed to the left of the value.")]
         [SerializeField]
-        private LocalizedString _title;
+        private LocalizableStringReference _title = new LocalizableStringReference();
 
         /// <summary>
         /// The string displayed to the left of the value..
         /// </summary>
-        public LocalizedString title
+        public LocalizableStringReference title
         {
             get => _title;
             set => _title = value;
         }
-        
-        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
+
+        public override void GetLocalizableStrings(IList<LocalizableStringReference> localizedStrings)
         {
-            base.GetLocalizedStrings(localizedStrings);
-            
-            if (!title.IsEmpty)
-            {
-                localizedStrings.Add(title);
-            }
+            base.GetLocalizableStrings(localizedStrings);
+
+            localizedStrings.Add(title);
         }
-        
+
         protected override void WriteXml(XElement element)
         {
             base.WriteXml(element);
-            
-            if (title.IsEmpty)
+
+            if (!title.TryGetValue("en", out var titleString))
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
-            
-            element.AddKeyValuePair("Title", title, "en");
+
+            element.AddKeyValuePair("Title", titleString);
         }
     }
 }

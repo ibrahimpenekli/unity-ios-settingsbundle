@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f67cc5c54f1469f9c6def47de47af01, type: 3}
-  m_Name: VerisonVariable
+  m_Name: About.VersionVariable
   m_EditorClassIdentifier: 

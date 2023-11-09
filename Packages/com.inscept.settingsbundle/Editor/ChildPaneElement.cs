@@ -10,47 +10,44 @@ namespace Inscept.SettingsBundle
     public class ChildPaneElement : PreferenceElement
     {
         public override string type => "PSChildPaneSpecifier";
-        
+
         [Tooltip("The title string displayed in the preference row.")]
         [SerializeField]
-        private LocalizedString _title;
+        private LocalizableStringReference _title = new LocalizableStringReference();
 
         /// <summary>
         /// The title string displayed in the preference row. This is the string the user taps to display the next page.
         /// This string is also used as the title of the screen that is subsequently displayed. This is required. 
         /// </summary>
-        public LocalizedString title
+        public LocalizableStringReference title
         {
             get => _title;
             set => _title = value;
         }
 
         [SerializeField]
-        private PreferenceElement[] _preferenceElements  = Array.Empty<PreferenceElement>();
+        private PreferenceElement[] _preferenceElements = Array.Empty<PreferenceElement>();
 
         public PreferenceElement[] preferenceElements
         {
             get => _preferenceElements;
             set => _preferenceElements = value;
         }
-        
-        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
+
+        public override void GetLocalizableStrings(IList<LocalizableStringReference> localizedStrings)
         {
-            base.GetLocalizedStrings(localizedStrings);
-            
-            if (!title.IsEmpty)
-            {
-                localizedStrings.Add(title);
-            }
+            base.GetLocalizableStrings(localizedStrings);
+
+            localizedStrings.Add(title);
         }
 
         protected override void WriteXml(XElement element)
         {
-            if (title.IsEmpty)
+            if (!title.TryGetValue("en", out var titleString))
                 throw new ArgumentException($"Title is required for '{name} ({type})'");
-            
+
             var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);
-            element.AddKeyValuePair("Title", title, "en");
+            element.AddKeyValuePair("Title", titleString);
             element.AddKeyValuePair("File", fileName);
         }
     }

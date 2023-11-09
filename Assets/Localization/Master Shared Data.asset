@@ -59,6 +59,14 @@ MonoBehaviour:
     m_Key: About_Version
     m_Metadata:
       m_Items: []
+  - m_Id: 234935532118016
+    m_Key: About_LicenseAgreement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235160371978240
+    m_Key: About_LicenseAgreement_ContentTitle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

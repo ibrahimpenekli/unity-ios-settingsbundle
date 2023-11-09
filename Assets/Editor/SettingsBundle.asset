@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: SettingsBundle
   m_EditorClassIdentifier: 
   _title:
-    m_TableReference:
-      m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
-    m_TableEntryReference:
-      m_KeyId: 96813380804608
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
+    _useConstant: 1
+    _constantValue:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _variable: {fileID: 0}
   _preferenceElements:
   - {fileID: 11400000, guid: f2cbe3b8a00650240b0bf8579e32eb35, type: 2}
   - {fileID: 11400000, guid: 3129c5792554af9428e81d43c943df9c, type: 2}
@@ -30,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4777aad682728d940bab055e6fad526c, type: 2}
   - {fileID: 11400000, guid: ddab303b6135445d9ba8cc3a9cffe345, type: 2}
   - {fileID: 11400000, guid: 363f7ee1dfb5b4d938159955ac83d7da, type: 2}
+  - {fileID: 11400000, guid: f75b40dd0c53d4aa68a15b03867f7648, type: 2}
   references:
     version: 2
     RefIds: []

@@ -36,7 +36,7 @@ namespace Inscept.SettingsBundle
             set => _supportedUserInterfaceIdioms = value;
         }
 
-        public virtual void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
+        public virtual void GetLocalizableStrings(IList<LocalizableStringReference> localizedStrings)
         {
             // Intentionally empty.
         }

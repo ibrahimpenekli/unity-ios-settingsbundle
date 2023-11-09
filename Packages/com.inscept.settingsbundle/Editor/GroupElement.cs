@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Localization;
 
 namespace Inscept.SettingsBundle
 {
@@ -17,20 +16,20 @@ namespace Inscept.SettingsBundle
 
         [Tooltip("The title of the group. If you do not specify title, a gap is inserted between preferences.")]
         [SerializeField]
-        private LocalizedString _title;
+        private LocalizableStringReference _title = new LocalizableStringReference();
 
         /// <summary>
         /// The title of the group. If you do not specify title, a gap is inserted between preferences.
         /// </summary>
-        public LocalizedString title
+        public LocalizableStringReference title
         {
             get => _title;
             set => _title = value;
         }
-        
+
         [Tooltip("Additional text to display below the group box. Providing a footer is optional.")]
         [SerializeField]
-        private LocalizedString _footerText;
+        private LocalizableStringReference _footerText = new LocalizableStringReference();
 
         /// <summary>
         /// Additional text to display below the group box. Providing a footer is optional.
@@ -39,37 +38,30 @@ namespace Inscept.SettingsBundle
         /// <remarks>
         /// This key is available in iOS 4.0 and later.
         /// </remarks>
-        public LocalizedString footerText
+        public LocalizableStringReference footerText
         {
             get => _footerText;
             set => _footerText = value;
         }
-        
-        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
+
+        public override void GetLocalizableStrings(IList<LocalizableStringReference> localizedStrings)
         {
-            base.GetLocalizedStrings(localizedStrings);
-            
-            if (!title.IsEmpty)
-            {
-                localizedStrings.Add(title);
-            }
-            
-            if (!footerText.IsEmpty)
-            {
-                localizedStrings.Add(footerText);
-            }
+            base.GetLocalizableStrings(localizedStrings);
+
+            localizedStrings.Add(title);
+            localizedStrings.Add(footerText);
         }
 
         protected override void WriteXml(XElement element)
         {
-            if (!title.IsEmpty)
+            if (title.TryGetValue("en", out var titleString))
             {
-                element.AddKeyValuePair("Title", title, "en");    
+                element.AddKeyValuePair("Title", titleString);
             }
 
-            if (!footerText.IsEmpty)
+            if (footerText.TryGetValue("en", out var footerString))
             {
-                element.AddKeyValuePair("FooterText", footerText, "en");
+                element.AddKeyValuePair("FooterText", footerString);
             }
         }
     }

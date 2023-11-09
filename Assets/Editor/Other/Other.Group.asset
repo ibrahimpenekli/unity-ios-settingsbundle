@@ -14,23 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _supportedUserInterfaceIdioms: 0
   _title:
-    m_TableReference:
-      m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
-    m_TableEntryReference:
-      m_KeyId: 95272603230208
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
+    _useConstant: 1
+    _constantValue:
+      m_TableReference:
+        m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
+      m_TableEntryReference:
+        m_KeyId: 95272603230208
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _variable: {fileID: 0}
   _footerText:
-    m_TableReference:
-      m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
-    m_TableEntryReference:
-      m_KeyId: 94407272177664
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
+    _useConstant: 1
+    _constantValue:
+      m_TableReference:
+        m_TableCollectionName: GUID:8db9d11c614ca1f45913241643130cd7
+      m_TableEntryReference:
+        m_KeyId: 94407272177664
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    _variable: {fileID: 0}
   references:
     version: 2
     RefIds: []

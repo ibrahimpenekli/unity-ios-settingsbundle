@@ -13,13 +13,13 @@ namespace Inscept.SettingsBundle
 
         [Tooltip("The string displayed to the left of the text field’s value.")]
         [SerializeField]
-        private LocalizedString _title;
+        private LocalizableStringReference _title = new LocalizableStringReference();
 
         /// <summary>
         /// The string displayed to the left of the text field’s value. This string is drawn left aligned and in
         /// bold face. If you omit the title, the editable text field spans the width of the row.
         /// </summary>
-        public LocalizedString title
+        public LocalizableStringReference title
         {
             get => _title;
             set => _title = value;
@@ -80,23 +80,20 @@ namespace Inscept.SettingsBundle
             set => _autoCorrectionType = value;
         }
 
-        public override void GetLocalizedStrings(IList<LocalizedString> localizedStrings)
+        public override void GetLocalizableStrings(IList<LocalizableStringReference> localizedStrings)
         {
-            base.GetLocalizedStrings(localizedStrings);
+            base.GetLocalizableStrings(localizedStrings);
             
-            if (!title.IsEmpty)
-            {
-                localizedStrings.Add(title);
-            }
+            localizedStrings.Add(title);
         }
 
         protected override void WriteXml(XElement element)
         {
             base.WriteXml(element);
             
-            if (!title.IsEmpty)
+            if (title.TryGetValue("en", out var titleString))
             {
-                element.AddKeyValuePair("Title", title, "en");    
+                element.AddKeyValuePair("Title", titleString);    
             }
             
             element.AddKeyValuePair("IsSecure", isSecure);

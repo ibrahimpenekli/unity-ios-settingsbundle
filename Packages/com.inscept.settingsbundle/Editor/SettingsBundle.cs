@@ -14,12 +14,12 @@ namespace Inscept.SettingsBundle
     {
         [Tooltip("Optional settings page title.")]
         [SerializeField]
-        private LocalizedString _title;
+        private LocalizableStringReference _title = new LocalizableStringReference();
 
         /// <summary>
         /// The string displayed as settings page title. If you omit the title, default title is displayed.
         /// </summary>
-        public LocalizedString title
+        public LocalizableStringReference title
         {
             get => _title;
             set => _title = value;
@@ -45,13 +45,13 @@ namespace Inscept.SettingsBundle
            }
            
            Directory.CreateDirectory(settingsBundlePath);
-           
+
            WritePlistFiles(settingsBundlePath, "Root", title, preferenceElements);
 
            return settingsBundlePath;
         }
 
-        private static void WritePlistFiles(string outputDirectory, string name, LocalizedString title,
+        private static void WritePlistFiles(string outputDirectory, string name, LocalizableStringReference title,
             IEnumerable<PreferenceElement> preferenceElements)
         {
             var doc = new XDocument();
@@ -65,9 +65,9 @@ namespace Inscept.SettingsBundle
             var dict = new XElement("dict");
             xml.Add(dict);
 
-            if (!title.IsEmpty)
+            if (title != null && title.TryGetValue("en", out var titleString))
             {
-                dict.AddKeyValuePair("Title", title, "en");
+                dict.AddKeyValuePair("Title", titleString);
             }
 
             var fileName = PlistHelper.ReplaceInvalidFileNameChars(name);
@@ -77,23 +77,22 @@ namespace Inscept.SettingsBundle
             var array = new XElement("array");
             dict.Add(array);
 
-            var localizedStrings = new List<LocalizedString>();
-
-            if (!title.IsEmpty)
-            {
-                localizedStrings.Add(title);
-            }
+            var localizedStrings = new List<LocalizableStringReference>();
             
+            if (title != null)
+            {
+                localizedStrings.Add(title);    
+            }
+
             foreach (var element in preferenceElements)
             {
                 array.Add(element.CreateXml());
 
-                element.GetLocalizedStrings(localizedStrings);
+                element.GetLocalizableStrings(localizedStrings);
 
                 if (element is ChildPaneElement childPaneElement)
                 {
-                    WritePlistFiles(outputDirectory, childPaneElement.name, new LocalizedString(), 
-                        childPaneElement.preferenceElements);
+                    WritePlistFiles(outputDirectory, childPaneElement.name, null, childPaneElement.preferenceElements);
                 }
             }
            
@@ -105,7 +104,7 @@ namespace Inscept.SettingsBundle
         }
 
         private static void WriteStringsFiles(string outputDirectory, string name, 
-            ICollection<LocalizedString> localizedStrings)
+            ICollection<LocalizableStringReference> localizableStrings)
         {
             var stringDatabase = LocalizationSettings.StringDatabase;
             if (stringDatabase == null)
@@ -114,8 +113,6 @@ namespace Inscept.SettingsBundle
                 return;
             }
 
-            var defaultLocale = LocalizationSettings.AvailableLocales.GetLocale("en");
-            
             foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
             {
                 var localeDirectory = Path.Combine(outputDirectory, $"{locale.Identifier.Code}.lproj");
@@ -128,16 +125,13 @@ namespace Inscept.SettingsBundle
                 var localePath = Path.Combine(localeDirectory, $"{name}.strings");
                 using var writer = File.CreateText(localePath);
                     
-                foreach (var localizedString in localizedStrings)
+                foreach (var localizableString in localizableStrings)
                 {
-                    Debug.Assert(!localizedString.IsEmpty);
-                    
-                    var defaultValue = stringDatabase.GetLocalizedString(
-                        localizedString.TableEntryReference, defaultLocale, FallbackBehavior.DontUseFallback);
-                    
-                    var value = stringDatabase.GetLocalizedString(
-                        localizedString.TableEntryReference, locale, FallbackBehavior.UseFallback);
-                    
+                    if (!localizableString.IsLocalizable() ||
+                        !localizableString.TryGetValue("en", out var defaultValue) ||
+                        !localizableString.TryGetValue(locale.Identifier, out var value))
+                        continue;
+
                     writer.WriteLine($"\"{defaultValue}\" = \"{value}\";");
                 }
             }
